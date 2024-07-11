@@ -5,7 +5,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
-import pandas as pd
 import mysql.connector
 from mysql.connector import errorcode
 from dotenv import load_dotenv
@@ -120,9 +119,6 @@ def scrape_powerbi_table():
                 rows.append(row_data)
             else:
                 print("No rowheader found in row.")
-
-        print("Converting data to DataFrame...")
-        df = pd.DataFrame(rows, columns=headers)
 
         print("Connecting to MySQL...")
         cnx = connect_to_mysql()
