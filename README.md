@@ -1,7 +1,7 @@
 
 # GRT Dashboard Grabber
 
-GRT Dashboard Grabber is a Python-based tool designed to scrape data from Power BI dashboards and store the extracted data in a MySQL/MariaDB database. This project leverages Selenium for browser automation, BeautifulSoup for HTML parsing, and pandas for data manipulation.
+GRT Dashboard Grabber is a Python-based tool designed to scrape data from Power BI dashboards and store the extracted data in a MySQL/MariaDB database. This project leverages Selenium for browser automation and BeautifulSoup for HTML parsing for data manipulation.
 
 ## Features
 
@@ -59,6 +59,5 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 - [Selenium](https://www.selenium.dev/)
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
-- [pandas](https://pandas.pydata.org/)
 - [mysql-connector-python](https://dev.mysql.com/doc/connector-python/en/)
 - [python-dotenv](https://github.com/theskumar/python-dotenv)
