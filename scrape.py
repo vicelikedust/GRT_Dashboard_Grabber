@@ -57,9 +57,39 @@ def ensure_table_exists(cursor):
         print(f"Failed creating table: {err}")
 
 def data_exists(cursor, year):
-    query = "SELECT 1 FROM PowerBIData WHERE Year = %s"
+    query = "SELECT * FROM PowerBIData WHERE Year = %s"
     cursor.execute(query, (year,))
-    return cursor.fetchone() is not None
+    return cursor.fetchone()
+
+def update_data(cursor, existing_data, new_data):
+    update_query = """
+    UPDATE PowerBIData
+    SET Jan = %s,
+        Feb = %s,
+        Mar = %s,
+        Apr = %s,
+        May = %s,
+        Jun = %s,
+        Jul = %s,
+        Aug = %s,
+        Sep = %s,
+        Oct = %s,
+        Nov = %s,
+        `Dec` = %s,
+        Total = %s
+    WHERE Year = %s
+    """
+    
+    # Update only if the new data is not None and the existing data is None or empty
+    updated_data = []
+    for i in range(1, len(new_data)):
+        if new_data[i] is not None and (existing_data[i] is None or existing_data[i].strip() == ''):
+            updated_data.append(new_data[i])
+        else:
+            updated_data.append(existing_data[i])
+        print(f"Field {i} update: Existing: {existing_data[i]}, New: {new_data[i]}, Update to: {updated_data[-1]}")  # Debug print for each field
+    
+    cursor.execute(update_query, updated_data + [new_data[0]])
 
 def insert_data(cursor, data):
     add_data = ("INSERT INTO PowerBIData "
@@ -128,15 +158,18 @@ def scrape_powerbi_table():
         cursor = cnx.cursor()
         ensure_table_exists(cursor)
 
-        print("Inserting data into MySQL...")
+        print("Inserting or updating data in MySQL...")
         for row_data in rows:
             year = row_data[0]
-            if not data_exists(cursor, year):
-                insert_data(cursor, row_data)
-                cnx.commit()
-                print(f"Inserted data for year {year}")
+            existing_data = data_exists(cursor, year)
+            print(f"Existing data for year {year}: {existing_data}")
+            if existing_data:
+                update_data(cursor, existing_data, row_data)
+                print(f"Updated data for year {year}")
             else:
-                print(f"Data for year {year} already exists. Skipping insert.")
+                insert_data(cursor, row_data)
+                print(f"Inserted data for year {year}")
+            cnx.commit()
 
         cursor.close()
         cnx.close()
