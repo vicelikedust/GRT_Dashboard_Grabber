@@ -19,8 +19,8 @@ GRT Dashboard Grabber is a Python-based tool designed to scrape data from Power 
 ## Installation
 
 1. **Clone the repository:**
-   \`\`\`bash
-   git clone https://github.com/yourusername/GRT-Dashboard-Grabber.git
+   \`\`\`
+   git clone https://github.com/vicelikedust/GRT_Dashboard_Grabber.git
    cd GRT-Dashboard-Grabber
    \`\`\`
 
@@ -31,7 +31,7 @@ GRT Dashboard Grabber is a Python-based tool designed to scrape data from Power 
 
 3. **Set up your `.env` file:**
    Create a `.env` file in the project directory and add your MySQL/MariaDB credentials:
-   \`\`\`plaintext
+   \`\`\`
    MYSQL_USER=your_username
    MYSQL_PASSWORD=your_password
    MYSQL_HOST=your_host
@@ -41,16 +41,12 @@ GRT Dashboard Grabber is a Python-based tool designed to scrape data from Power 
 ## Usage
 
 1. **Run the script:**
-   \`\`\`bash
+   \`\`\`
    python scrape.py
    \`\`\`
 
 2. The script will open the specified Power BI report URL, scrape the data, and insert it into the MySQL/MariaDB database.
 
-## Configuration
-
-- **Power BI Report URL:**
-  Update the `url` variable in `scrape.py` with the Power BI report URL you want to scrape.
 
 ## License
 
