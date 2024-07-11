@@ -20,7 +20,7 @@ GRT Dashboard Grabber is a Python-based tool designed to scrape data from Power 
 
 1. **Clone the repository:**
    
-   - git clone https://github.com/vicelikedust/GRT_Dashboard_Grabber.git && cd GRT-Dashboard-Grabber
+   - git clone https://github.com/vicelikedust/GRT_Dashboard_Grabber.git && cd GRT_Dashboard_Grabber
    
 
 2. **Install the required Python packages:**
