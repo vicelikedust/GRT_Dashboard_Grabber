@@ -7,7 +7,7 @@ GRT Dashboard Grabber is a Python-based tool designed to scrape data from Power 
 
 - Automatically open and scrape data from a specified Power BI report URL.
 - Extract and clean tabular data from the report.
-- Store the extracted data in a MySQL/MariaDB database.
+- Stores or updates the extracted data in a MySQL/MariaDB database.
 - Ensure data is not duplicated in the database.
 
 ## Requirements
